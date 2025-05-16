@@ -1,0 +1,45 @@
+1º PASSO - LIGAR MINH API
+
+pip install -r requirements.txt
+
+2º PASSO - ATUALIZAR O PYTHON
+
+python .\api\app.py
+
+3º RODAR A MINHA API 
+http://127.0.0.1:5000
+-----------------------------------------------------------------------------
+API DA ESCOLA
+https://school-system-spi.onrender.com/docs
+-----------------------------------------------------------------------------
+GET DO PROFESSOR:
+
+const API_URL_PROFESSOR =
+  "http://127.0.0.1:5000/api/professores";
+document
+  .getElementById("listar-professores") //GET // LINCAR DO HTML COM JS 
+  .addEventListener("click", async () => {
+    const res = await fetch(API_URL_PROFESSOR);
+    const professores = await res.json();
+
+    const container = document.getElementById("professores-lista");
+    container.innerHTML =
+      "<h2>Lista de Professores</h2>" +
+      professores
+        .map(
+          (p) => `
+    <div>
+      <strong>${p.nome}</strong> (ID: ${p.id})<br>
+      Matéria: ${p.materia}<br>
+      Observação: ${p.observacoes}<hr>
+      Idade: ${p.idade}<hr>
+    </div>
+  `
+        )
+        .join("");
+  });
+
+-----------------------------------------------------------------------------
+https://github.com/caio-ireno/school-system-client-vanilla
+-----------------------------------------------------------------------------
+
